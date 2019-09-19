@@ -18,18 +18,34 @@ handleClick(e){
 }
 
 calculate(){
-  var M, P, n;
+  var M, P;
+  var balance; 
   var term;
-  var r;
-  r= rate/12;
-  const n=6; 
+  var monthrate;
+  monthrate= rate/12;
+  var n; 
+  //n= 12*15 for 15 yrs mortgage or 12*30 for 30 yrs mortgage
   P= balance;
+  var simple = Math.pow((1+monthrate), n)
+  var numerator, denominator;
+  numerator= mrate*simple;
+  denominator= simple-1;
+  var bracketvalue = numerator/denominator;
+  M = bracketvalue*P;
+  var output = M.toString();
+  
 
 
   if(term=15){
+    n=12*15;
+    var simple = Math.pow((1+monthrate), n)
+
 
   }
   else if(term=30){
+    n=12.30;
+    var simple = Math.pow((1+monthrate), n)
+
 
   } 
 }
@@ -63,7 +79,7 @@ calculate(){
         </div>
       
          <div className="col-sm-12" name="output" id="output">Output</div>
-
+            
          </div>
   
         {
