@@ -6,10 +6,32 @@ export default class App extends React.Component {
     super(props)
     this.state = {balance: 0, rate: 0, term: 15,}
     this.handleChange = this.handleChange.bind(this);
+    this.handleCilck = this.handleClick.bind(this);
   }
 
   handleChange(event) {
-    this.setState({balance: event.target.balance, rate: event.target.rate});
+    this.setState({balance: event.target.balance, rate: event.target.rate, term: event.target.term});
+}
+
+handleClick(e){
+  this.setState({output: e.target.M})
+}
+
+calculate(){
+  var M, P, n;
+  var term;
+  var r;
+  r= rate/12;
+  const n=6; 
+  P= balance;
+
+
+  if(term=15){
+
+  }
+  else if(term=30){
+
+  } 
 }
 
 
@@ -37,7 +59,7 @@ export default class App extends React.Component {
             </select>
         </div>
         <div>
-        <button name="submit">Submit</button>
+        <button name="submit" onClick={this.calculate()}>Submit</button>
         </div>
       
          <div className="col-sm-12" name="output" id="output">Output</div>
