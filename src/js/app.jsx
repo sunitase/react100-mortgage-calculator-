@@ -4,7 +4,7 @@ export default class App extends React.Component {
   // your Javascript goes here
   constructor(props){
     super(props)
-    this.state = {balance: '', rate: '', term: 15}
+    this.state = {balance: 0, rate: 0, term: 15}
     this.handleChange = this.handleChange.bind(this);
     //this.onChange = this.onChange.bind(this);
     //this.handleCilck = this.handleClick.bind(this);
@@ -17,7 +17,8 @@ calculate(){
 console.log("test")
   //var monthlyPay, P;
 const balance = this.state.balance;
-  //balance = (state.balance).value;
+
+
 
  // rate = (this.state.rate).value;
  // term = (this.state.term).value; 
