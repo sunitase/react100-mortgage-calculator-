@@ -13,12 +13,12 @@ export default class App extends React.Component {
 
  
 
-calculate(event, balance, rate, term){
-  event.preventDefault()
+calculate(){
+  //event.preventDefault()
 console.log("test")
- balance = this.state.balance;
- rate = this.state.rate;
- term = this.state.term;
+ const balance = this.state.balance;
+ const rate = this.state.rate;
+ const term = this.state.term;
  
   console.log(balance);
   console.log(rate);
@@ -69,8 +69,9 @@ handleChange(event) {
 
 }
 
-handleClick(){
- console.log('hello')
+handleClick(e){
+e.preventDefault() 
+let calculate = this.calculate();
 
  //this.setState({e:target.finalmonthly})
 }
@@ -104,7 +105,7 @@ handleClick(){
         <br></br>
         <div>
           <div>
-          <button  value={this.state.output} name="submit" onClick={this.calculate}>Submit</button>
+          <button  value={this.state.output} name="submit" onClick={this.handleClick}>Submit</button>
            <div name="output" id="output">{this.state.output}</div>
           </div>
          </div>
