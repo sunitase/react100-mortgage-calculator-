@@ -14,57 +14,23 @@ export default class App extends React.Component {
  
 
 calculate(){
-  //event.preventDefault()
-console.log("test")
  const balance = this.state.balance;
  const rate = this.state.rate;
  const term = this.state.term;
- 
-  console.log(balance);
-  console.log(rate);
-  console.log(term);
   var monthlyPay;
   var monthrate;
   var n;
-  /*
-  if (term == 15){
-    n = 15*12;
-    term=15;
-  }
-  else if (term==30)
-  {
-    n = 30*12;
-    term=30;
-  }
- */
+  if (term == 15){n = 15*12;}
+  else if (term==30){n = 30*12;}
   monthrate= rate/1200;
-  monthlyPay = balance * monthrate / (1 - (Math.pow(1/(1 + monthrate), term)));
- var finalmonthly= monthlyPay/10;
-  console.log(monthrate);
-  console.log(n);
-  /*var getpowof=1+monthrate;
-  
-  var simplepowval = Math.pow(getpowof, n)
-  console.log(simplepowval);
-  var numerator, denominator;
-  numerator= monthrate*simplepowval;
-  denominator= simplepowval-1;
-  var bracketvalue = numerator/denominator;
-  monthlyPay = bracketvalue*balance;*/
-  var outp = finalmonthly.toFixed(2).toString();
-console.log(outp);
-
-return(this.setState({output : `$${outp} is your monthly payment`} ))
- 
-  
-  
-  
-  
+  monthlyPay = (balance*(monthrate*Math.pow(1+monthrate,n)))/(Math.pow(1+monthrate,n)-1);
+  var TotalPay = monthlyPay*n;
+  var outp = monthlyPay.toFixed(2).toString();
+  return(this.setState({output : `${outp} is your monthly payment`} )) 
 }
 
-handleChange(event) {
+  handleChange(event) {
   console.log(event.target.name, event.target.value)
-  //this.setState({balance: event.target.balance, rate: event.target.rate, term: event.target.term});
   this.setState({[event.target.name]: event.target.value})
 
 }
@@ -72,48 +38,56 @@ handleChange(event) {
 handleClick(e){
 e.preventDefault() 
 let calculate = this.calculate();
-
- //this.setState({e:target.finalmonthly})
 }
 
   render() {
     return (
-      <form>
-      
-      <div className='container'>
 
-      <div className='row'>
-        <h3 size="12">Mortgage Calculator</h3>
-        <br></br>
-        <div>
-        <label>Loan Balance      </label>
-        <input type= 'number'  name= 'balance' value={this.state.balance} onChange={this.handleChange}></input>
-        </div>
-        <br></br>
-        <div>
-        <label>Interest Rate (%)      </label>
-        <input type="number" name="rate" step="0.01" value={this.state.rate} onChange={this.handleChange}></input>
-        </div>
-        <div>
-          <br></br>
-        <label>Loan Term (yrs)     </label>
-            <select name="term" value={this.state.term} onChange={this.handleChange}>
-                <option value="15">15</option>
-                <option value="30">30</option>        
-            </select>
-        </div>
-        <br></br>
-        <div>
-          <div>
-          <button  value={this.state.output} name="submit" onClick={this.handleClick}>Submit</button>
-           <div name="output" id="output">{this.state.output}</div>
-          </div>
-         </div>
-  
-      </div>
-      </div>
     
-    </form>
-    );
+      <form className="form-horizontal">
+      <div classNameName="container">
+      <h3>Mortgage Calculator</h3>
+      <br></br>
+      <div className="row">
+      <div className="col-sm-3">
+          <label HTMLfor="loan">Loan Balance </label>
+      </div>
+      <div className="col-sm-9">
+          <input type= 'number'  name= 'balance' value={this.state.balance} onChange={this.handleChange}></input>
+          <br></br>
+      </div>
+      </div>
+      <div className="row">
+          <div className="col-sm-3">
+          <label HTMLfor="loan">Interest Rate (%)</label>
+          </div>
+          <div className="col-sm-9">
+          <input type="number" name="rate" step="0.01" value={this.state.rate} onChange={this.handleChange}></input>
+          
+          </div>
+  
+          <div className="col-sm-3">
+          <label for="term">Loan Term (yrs) </label>
+           </div>
+          <div className="col-sm-9">
+          <select name="term" value={this.state.term} onChange={this.handleChange}>
+              <option value="15">15 yr</option>
+              <option value="30">30 yr</option>        
+          </select>
+          </div>
+          <br></br>
+          <div className="col-sm-12">
+          <button value={this.state.output} name="submit" onClick={this.handleClick}>Calculate</button>
+          <div className="col-sm-12" name="output" id="output">{this.state.output}</div>
+          </div>
+      </div>
+      </div>
+  </form>
+  );
   }
 }
+
+
+
+
+    
