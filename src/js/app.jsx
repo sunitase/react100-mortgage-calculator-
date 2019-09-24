@@ -26,7 +26,8 @@ calculate(){
   monthlyPay = (balance*(monthrate*Math.pow(1+monthrate,n)))/(Math.pow(1+monthrate,n)-1);
   var TotalPay = monthlyPay*n;
   var outp = monthlyPay.toFixed(2).toString();
-  return(this.setState({output : `${outp} is your monthly payment`} )) 
+  //return(this.setState({output : `${outp} is your monthly payment`} )) 
+  return(this.setState({output : `Your monthly payment is ${outp}`} )) 
 }
 
   handleChange(event) {
