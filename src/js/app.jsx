@@ -1,4 +1,5 @@
 import React from 'react';
+//import { doesNotReject } from 'assert';
 
 export default class App extends React.Component {
   // your Javascript goes here
@@ -24,14 +25,13 @@ calculate(){
   monthlyPay = (balance*(monthrate*Math.pow(1+monthrate,n)))/(Math.pow(1+monthrate,n)-1);
   var TotalPay = monthlyPay*n;
   var outp = monthlyPay.toFixed(2).toString();
-  //return(this.setState({output : `${outp} is your monthly payment`} )) 
   return(this.setState({output : `Your monthly payment is ${outp}`} )) 
 }
 
   handleChange(event) {
   console.log(event.target.name, event.target.value)
   this.setState({[event.target.name]: event.target.value})
-
+  
 }
 
 handleClick(e){
@@ -41,8 +41,6 @@ let calculate = this.calculate();
 
   render() {
     return (
-
-    
       <form>
        
           <div className="topic pt-4 text-center bg-info shadow-sm p-4 mb-4">
@@ -57,9 +55,9 @@ let calculate = this.calculate();
               <div className="col-sm-4">
                 <label HTMLfor="loan">Loan Balance </label>
               </div>
+
               <div className="col-sm-8">
-                <input type= 'number'  name= 'balance' value={this.state.balance} onChange={this.handleChange}></input>
-                <br></br>
+                <input name="balance" id="balance" type="number" value={this.state.balance} onChange={this.handleChange} />
               </div>
           </div>
       </div>
@@ -67,7 +65,7 @@ let calculate = this.calculate();
       <div className="p-2 bg-warning flex-fill">
         <div className="row">
               <div className="col-sm-4">
-              <label HTMLfor="loan">Interest Rate (%)</label>
+              <label htmlFor="loan">Interest Rate (%)</label>
               </div>
               <div className="col-sm-8">
               <input type="number" name="rate" step="0.01" value={this.state.rate} onChange={this.handleChange}></input>
@@ -78,10 +76,10 @@ let calculate = this.calculate();
         <div className="p-2 bg-info">
       <div className="row">
           <div className="col-sm-4">
-             <label for="term">Loan Term (yrs) </label>
+             <label htmlFor="term">Loan Term (yrs) </label>
            </div>
           <div className="col-sm-8">
-              <select name="term" value={this.state.term} onChange={this.handleChange}>
+              <select name="term" id="term" value={this.state.term} onChange={this.handleChange}>
               <option value="15">15 yr</option>
               <option value="30">30 yr</option>        
               </select>
@@ -103,9 +101,7 @@ let calculate = this.calculate();
         </div>
         </div>
 
-
-      </div>
-    
+      </div>   
   </form>
   );
   }
