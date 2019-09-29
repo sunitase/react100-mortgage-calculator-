@@ -6,7 +6,6 @@ export default class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {balance: 0, rate: 0, term: 15, output: ''}
-    
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.calculate = this.calculate.bind(this);
